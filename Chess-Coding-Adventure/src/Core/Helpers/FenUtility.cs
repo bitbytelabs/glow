@@ -159,7 +159,6 @@ namespace Chess.Core
 			string flippedFen = "";
 			string[] sections = fen.Split(' ');
 
-			List<char> invertedFenChars = new();
 			string[] fenRanks = sections[0].Split('/');
 
 			for (int i = fenRanks.Length - 1; i >= 0; i--)
