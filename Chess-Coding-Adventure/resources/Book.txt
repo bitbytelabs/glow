@@ -34563,8 +34563,6 @@ pos r1bqkb1r/pp2pppp/2n2n2/2p5/2Pp4/3P1NP1/PP2PPBP/RNBQ1RK1 b kq -
 e7e5 102
 pos r2qkbnr/ppp2ppp/2n1p3/3p1b2/3P4/5NP1/PPP1PPBP/RNBQK2R w KQkq -
 e1g1 24
-pos rnbqkb1r/pp3ppp/3p1n2/2pPp3/2P5/2N5/PP2PPPP/R1BQKBNR w KQkq e6
-e2e4 37
 pos rnbqkbnr/ppp2ppp/4p3/3p4/3P4/2P2N2/PP2PPPP/RNBQKB1R b KQkq -
 g8f6 137
 c7c5 67
@@ -44646,9 +44644,6 @@ pos r1bqkbnr/pp1p1ppp/2n5/2p1p3/4P3/5NP1/PPPP1P1P/RNBQKB1R w KQkq -
 f1g2 23
 pos r1bqkbnr/pp3ppp/2np4/2p1p3/4P3/5NP1/PPPP1PBP/RNBQK2R w KQkq -
 e1g1 27
-pos rnbqkbnr/pp3ppp/3p4/2pPp3/2P5/8/PP2PPPP/RNBQKBNR w KQkq e6
-b1c3 62
-e2e4 31
 pos rnbqkbnr/pp3ppp/4p3/3P4/3P4/8/PP3PPP/RNBQKBNR b KQkq -
 e6d5 47
 d8d5 20
