@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using static System.Math;
 
-namespace CodingAdventureBot;
+namespace Glow;
 
 public class Bot
 {
@@ -39,7 +39,7 @@ public class Bot
 		searcher = new Searcher(board);
 		searcher.OnSearchComplete += OnSearchComplete;
 
-		book = new OpeningBook(Chess_Coding_Adventure.Properties.Resources.Book);
+		book = new OpeningBook(Glow.Properties.Resources.Book);
 		searchWaitHandle = new(false);
 
 		Task.Factory.StartNew(SearchThread, TaskCreationOptions.LongRunning);

@@ -2,7 +2,7 @@
 using System;
 using System.IO;
 
-namespace CodingAdventureBot;
+namespace Glow;
 
 public class EngineUCI
 {
@@ -179,7 +179,7 @@ public class EngineUCI
 		get
 		{
 			string dir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-			return Path.Combine(dir, "Chess-Coding-Adventure");
+			return Path.Combine(dir, "Glow");
 		}
 	}
 
