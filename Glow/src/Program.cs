@@ -1,4 +1,4 @@
-﻿namespace CodingAdventureBot;
+﻿namespace Glow;
 using Chess.Core;
 using System;
 using System.Collections.Generic;
