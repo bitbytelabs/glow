@@ -27,6 +27,6 @@ challenge:
 matchmaking:
   allow_matchmaking: true
 messages:
-  greeting: "Good luck, have fun!"
-  goodbye: "GG!"
-  greeting_spectators: "Thanks for watching."
+  greeting: "__GREETING_MESSAGE__"
+  goodbye: "__GOODBYE_MESSAGE__"
+  greeting_spectators: "__SPECTATOR_MESSAGE__"

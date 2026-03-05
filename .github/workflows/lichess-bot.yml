@@ -64,12 +64,41 @@ jobs:
           from pathlib import Path
           import os
 
+          import random
+
+          def build_messages(prefix, subjects, tones):
+              messages = []
+              for subject in subjects:
+                  for tone in tones:
+                      for n in range(1, 11):
+                          messages.append(f"{prefix} {subject} — {tone} ({n})")
+              return messages
+
+          greeting_messages = build_messages(
+              "Good luck",
+              ["have a great game", "let's play sharp", "time for good chess", "enjoy the match", "ready when you are", "wishing you a clean game", "let's test ideas", "bring your opening prep", "have fun out there", "make every move count"],
+              ["stay creative", "play bold", "play clean", "keep it fun", "bring your best", "respectful battle", "focus up", "fair play always", "good vibes", "strong moves"]
+          )
+          goodbye_messages = build_messages(
+              "GG",
+              ["thanks for the game", "well played", "nice fight", "great battle", "appreciate the match", "strong game today", "respect for the battle", "good strategic duel", "impressive resourcefulness", "excellent practical play"],
+              ["until next game", "see you soon", "good luck next round", "clean finish", "fun one", "solid play", "respect", "great conversion", "nice defense", "good technique"]
+          )
+          spectator_messages = build_messages(
+              "Thanks for watching",
+              ["chat", "everyone", "friends", "spectators", "supporters", "the arena", "new viewers", "chess fans", "the stream", "all observers"],
+              ["enjoy the show", "appreciate you", "hope you like the game", "great to have you here", "cheers", "stay tuned", "more games soon", "thanks for the support", "have fun", "good chess to all"]
+          )
+
           template = Path('.github/lichess/config.template.yml').read_text()
           config = (
               template
               .replace('__LICHESS_TOKEN__', os.environ['LICHESS_BOT_TOKEN'])
               .replace('__ENGINE_PATH__', str(Path.cwd() / 'dist' / 'glow' / 'Glow'))
               .replace('__RATED_ONLY__', os.environ['RATED_ONLY'].lower())
+              .replace('__GREETING_MESSAGE__', random.choice(greeting_messages))
+              .replace('__GOODBYE_MESSAGE__', random.choice(goodbye_messages))
+              .replace('__SPECTATOR_MESSAGE__', random.choice(spectator_messages))
           )
           Path('lichess-bot/config.yml').write_text(config)
           PY
