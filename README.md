@@ -22,3 +22,4 @@ This repository includes `.github/workflows/lichess-bot.yml`, which:
 4. Run the **Lichess Bot** workflow manually, or let the schedule run every 30 minutes.
 
 You can customize game filters and behavior in `.github/lichess/config.template.yml`.
+You can also customize chat text used by the GitHub Action generator in `.github/workflows/lichess-bot.yml` (it builds large message pools and picks random greetings/goodbyes/spectator messages each run).
