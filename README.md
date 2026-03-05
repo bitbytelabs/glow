@@ -21,5 +21,9 @@ This repository includes `.github/workflows/lichess-bot.yml`, which:
 3. Add the token to your repo secrets as `LICHESS_BOT_TOKEN`.
 4. Run the **Lichess Bot** workflow manually, or let the schedule run every 30 minutes.
 
+### Optional idle puzzle warmup
+
+The workflow now supports a `puzzle_warmup_minutes` input (default: `3`). Before connecting to lichess, it runs `.github/scripts/idle_puzzle_warmup.py`, which feeds tactical FEN positions to Glow as a short warmup while the bot is otherwise idle. Set `puzzle_warmup_minutes` to `0` to disable it.
+
 You can customize game filters and behavior in `.github/lichess/config.template.yml`.
 You can also customize chat text used by the GitHub Action generator in `.github/workflows/lichess-bot.yml` (it builds large message pools and picks random greetings/goodbyes/spectator messages each run).
