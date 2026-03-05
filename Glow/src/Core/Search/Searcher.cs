@@ -42,11 +42,11 @@
 		readonly Evaluation evaluation;
 		readonly Board board;
 
-		public Searcher(Board board)
+		public Searcher(Board board, EvaluationWeights? weights = null)
 		{
 			this.board = board;
 
-			evaluation = new Evaluation();
+			evaluation = new Evaluation(weights);
 			moveGenerator = new MoveGenerator();
 			transpositionTable = new TranspositionTable(board, transpositionTableSizeMB);
 			moveOrderer = new MoveOrdering(moveGenerator, transpositionTable);

@@ -33,10 +33,11 @@ public class Bot
 	int currentSearchID;
 	bool isQuitting;
 
-	public Bot()
+	public Bot(string? evaluationWeightsPath = null)
 	{
 		board = Board.CreateBoard();
-		searcher = new Searcher(board);
+		EvaluationWeights weights = LoadEvaluationWeights(evaluationWeightsPath);
+		searcher = new Searcher(board, weights);
 		searcher.OnSearchComplete += OnSearchComplete;
 
 		book = new OpeningBook(Glow.Properties.Resources.Book);
@@ -45,6 +46,15 @@ public class Bot
 		Task.Factory.StartNew(SearchThread, TaskCreationOptions.LongRunning);
 	}
 
+
+	EvaluationWeights LoadEvaluationWeights(string? evaluationWeightsPath)
+	{
+		string path = string.IsNullOrWhiteSpace(evaluationWeightsPath)
+			? GetResourcePath("eval-weights.json")
+			: evaluationWeightsPath;
+
+		return EvaluationWeights.LoadOrDefault(path);
+	}
 	public void NotifyNewGame()
 	{
 		searcher.ClearForNewPosition();

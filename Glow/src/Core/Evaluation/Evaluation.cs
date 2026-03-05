@@ -9,12 +9,19 @@
 		public const int RookValue = 500;
 		public const int QueenValue = 900;
 
+		readonly EvaluationWeights weights;
+
 		static readonly int[] passedPawnBonuses = { 0, 120, 80, 50, 30, 15, 15 };
 		static readonly int[] isolatedPawnPenaltyByCount = { 0, -10, -25, -50, -75, -75, -75, -75, -75 };
 		static readonly int[] kingPawnShieldScores = { 4, 7, 4, 3, 6, 3 };
 
 		const float endgameMaterialStart = RookValue * 2 + BishopValue + KnightValue;
 		Board board;
+
+		public Evaluation(EvaluationWeights? weights = null)
+		{
+			this.weights = weights ?? EvaluationWeights.Default();
+		}
 
 		public EvaluationData whiteEval;
 		public EvaluationData blackEval;
@@ -50,7 +57,7 @@
 			blackEval.pawnShieldScore = KingPawnShield(Board.BlackIndex, whiteMaterial, whiteEval.pieceSquareScore);
 
 			int perspective = board.IsWhiteToMove ? 1 : -1;
-			int eval = whiteEval.Sum() - blackEval.Sum();
+			int eval = whiteEval.Sum(weights) - blackEval.Sum(weights);
 			return eval * perspective;
 		}
 
@@ -249,9 +256,14 @@
 			public int pawnScore;
 			public int pawnShieldScore;
 
-			public int Sum()
+			public int Sum(EvaluationWeights weights)
 			{
-				return materialScore + mopUpScore + pieceSquareScore + pawnScore + pawnShieldScore;
+				int material = (int)System.Math.Round(materialScore * weights.MaterialScale);
+				int mopUp = (int)System.Math.Round(mopUpScore * weights.MopUpScale);
+				int pieceSquare = (int)System.Math.Round(pieceSquareScore * weights.PieceSquareScale);
+				int pawn = (int)System.Math.Round(pawnScore * weights.PawnStructureScale);
+				int kingSafety = (int)System.Math.Round(pawnShieldScore * weights.KingSafetyScale);
+				return material + mopUp + pieceSquare + pawn + kingSafety;
 			}
 		}
 
