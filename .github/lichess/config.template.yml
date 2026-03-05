@@ -26,6 +26,17 @@ challenge:
   rated_only: __RATED_ONLY__
 matchmaking:
   allow_matchmaking: true
+  challenge_initial_time:
+    - 60
+    - 120
+    - 180
+    - 300
+  challenge_increment:
+    - 0
+    - 1
+    - 2
+    - 3
+    - 5
 messages:
   greeting: "__GREETING_MESSAGE__"
   goodbye: "__GOODBYE_MESSAGE__"
