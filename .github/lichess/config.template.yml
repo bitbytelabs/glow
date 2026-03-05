@@ -4,12 +4,12 @@ engine:
   dir: "."
   name: "__ENGINE_PATH__"
   protocol: "uci"
-  ponder: false
+  ponder: true
   polyglot:
-    enabled: false
+    enabled: true
   draw_or_resign:
-    offer_draw_enabled: false
-    resign_enabled: false
+    offer_draw_enabled: true
+    resign_enabled: true
 challenge:
   concurrency: 1
   sort_by: "best"
@@ -25,7 +25,7 @@ challenge:
     - casual
   rated_only: __RATED_ONLY__
 matchmaking:
-  allow_matchmaking: false
+  allow_matchmaking: true
 messages:
   greeting: "Good luck, have fun!"
   goodbye: "GG!"
