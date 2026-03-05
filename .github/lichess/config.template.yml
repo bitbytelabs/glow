@@ -1,0 +1,32 @@
+token: "__LICHESS_TOKEN__"
+url: "https://lichess.org/"
+engine:
+  dir: "."
+  name: "__ENGINE_PATH__"
+  protocol: "uci"
+  ponder: false
+  polyglot:
+    enabled: false
+  draw_or_resign:
+    offer_draw_enabled: false
+    resign_enabled: false
+challenge:
+  concurrency: 1
+  sort_by: "best"
+  accept_bot: true
+  max_increment: 180
+  min_increment: 0
+  max_base: 1800
+  min_base: 0
+  variants: ["standard"]
+  time_controls: ["bullet", "blitz", "rapid"]
+  modes:
+    - rated
+    - casual
+  rated_only: __RATED_ONLY__
+matchmaking:
+  allow_matchmaking: false
+messages:
+  greeting: "Good luck, have fun!"
+  goodbye: "GG!"
+  greeting_spectators: "Thanks for watching."
