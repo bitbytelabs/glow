@@ -11,6 +11,10 @@ on:
         description: "Accept only rated challenges"
         required: false
         default: "true"
+      puzzle_warmup_minutes:
+        description: "How long to run puzzle warmup before connecting (minutes)"
+        required: false
+        default: "3"
   schedule:
     - cron: "*/30 * * * *"
 
@@ -26,6 +30,7 @@ jobs:
       LICHESS_BOT_TOKEN: ${{ secrets.LICHESS_BOT_TOKEN }}
       RUN_MINUTES: ${{ github.event.inputs.run_minutes || '55' }}
       RATED_ONLY: ${{ github.event.inputs.rated_only || 'true' }}
+      PUZZLE_WARMUP_MINUTES: ${{ github.event.inputs.puzzle_warmup_minutes || '3' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -57,6 +62,7 @@ jobs:
           git clone --depth 1 https://github.com/lichess-bot-devs/lichess-bot.git ./lichess-bot
           python -m pip install --upgrade pip
           python -m pip install -r ./lichess-bot/requirements.txt
+          python -m pip install python-chess
 
       - name: Generate lichess-bot config
         run: |
@@ -102,6 +108,9 @@ jobs:
           )
           Path('lichess-bot/config.yml').write_text(config)
           PY
+
+      - name: Lichess puzzle warmup (idle training)
+        run: python .github/scripts/idle_puzzle_warmup.py
 
       - name: Start bot session
         working-directory: ./lichess-bot
