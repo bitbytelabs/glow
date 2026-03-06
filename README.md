@@ -23,7 +23,7 @@ This repository includes `.github/workflows/lichess-bot.yml`, which:
 
 ### Optional idle puzzle warmup
 
-The workflow now supports a `puzzle_warmup_minutes` input (default: `3`). Before connecting to lichess, it runs `.github/scripts/idle_puzzle_warmup.py`, which feeds tactical FEN positions to Glow as a short warmup while the bot is otherwise idle. Set `puzzle_warmup_minutes` to `0` to disable it.
+The workflow now supports a `puzzle_warmup_minutes` input (default: `3`). Before connecting to lichess, it runs `.github/scripts/idle_puzzle_warmup.py`, which pulls real puzzles from the Lichess puzzle API and has Glow attempt the solution line as a short idle warmup. Set `puzzle_warmup_minutes` to `0` to disable it.
 
 You can customize game filters and behavior in `.github/lichess/config.template.yml`.
 You can also customize chat text used by the GitHub Action generator in `.github/workflows/lichess-bot.yml` (it builds large message pools and picks random greetings/goodbyes/spectator messages each run).
